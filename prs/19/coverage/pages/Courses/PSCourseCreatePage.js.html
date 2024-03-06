@@ -146,14 +146,18 @@
 <a name='L81'></a><a href='#L81'>81</a>
 <a name='L82'></a><a href='#L82'>82</a>
 <a name='L83'></a><a href='#L83'>83</a>
-<a name='L84'></a><a href='#L84'>84</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -162,35 +166,39 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -219,8 +227,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -272,34 +280,37 @@ export default function CoursesCreatePage() {
     return &lt;Navigate to="/courses/list" /&gt;;
   }
   if (mutation.isError) {
-    if (!mutation.error.response.data?.message || <span class="branch-1 cbranch-no" title="branch not covered" >!mutation.error.response.data?.message.includes("EnrollCd"))</span> {
+    if (
+      !mutation.error.response.data?.message ||
+<span class="branch-1 cbranch-no" title="branch not covered" >      !mutation.error.response.data?.message.includes("EnrollCd")</span>
+    ) {
       return (
         &lt;BasicLayout&gt;
           &lt;div className="pt-2"&gt;
             &lt;h1&gt;Create New Course&lt;/h1&gt;
-  
             &lt;CourseForm submitAction={onSubmit} /&gt;
             &lt;p data-testid="PSCourseCreate-Error"&gt;
               Error: No personal schedules found. Please{" "}
-              &lt;Link to="/personalschedules/create"&gt;create a new personal schedule&lt;/Link&gt;{" "}
+              &lt;Link to="/personalschedules/create"&gt;
+                create a new personal schedule
+              &lt;/Link&gt;{" "}
               first.
             &lt;/p&gt;
           &lt;/div&gt;
         &lt;/BasicLayout&gt;
       );
-    }else <span class="missing-if-branch" title="else path not taken" >E</span>{
+    } else <span class="missing-if-branch" title="else path not taken" >E</span>{
 <span class="cstat-no" title="statement not covered" >      return (</span>
-      &lt;BasicLayout&gt;
-        &lt;div className="pt-2"&gt;
-          &lt;h1&gt;Create New Course&lt;/h1&gt;
-&nbsp;
-          &lt;CourseForm submitAction={onSubmit} /&gt;
-          &lt;p data-testid="PSCourseCreate-Error"&gt;
-            Error: {mutation.error.response.data?.message}
-          &lt;/p&gt;
-        &lt;/div&gt;
-      &lt;/BasicLayout&gt;
-    );
+        &lt;BasicLayout&gt;
+          &lt;div className="pt-2"&gt;
+            &lt;h1&gt;Create New Course&lt;/h1&gt;
+            &lt;CourseForm submitAction={onSubmit} /&gt;
+            &lt;p data-testid="PSCourseCreate-Error"&gt;
+              Error: {mutation.error.response.data?.message}
+            &lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/BasicLayout&gt;
+      );
     }
   }
 &nbsp;
@@ -312,14 +323,15 @@ export default function CoursesCreatePage() {
       &lt;/div&gt;
     &lt;/BasicLayout&gt;
   );
-}</pre></td></tr></table></pre>
+}
+&nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Tue Mar 05 2024 21:05:20 GMT-0800 (Pacific Standard Time)
+                at Tue Mar 05 2024 21:58:58 GMT-0800 (Pacific Standard Time)
             </div>
         <script src="../../prettify.js"></script>
         <script>
