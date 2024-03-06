@@ -37,11 +37,15 @@ export default function CourseTable({ courses, currentUser }) {
     },
     {
       Header: "Personal Schedule Name",
-      accessor: "Name",
+      accessor: "name"
     },
     {
       Header: "Course ID",
       accessor: "courseId",
+    },
+    {
+      Header: "Title",
+      accessor: "title"
     },
     {
       Header: "Quarter",
