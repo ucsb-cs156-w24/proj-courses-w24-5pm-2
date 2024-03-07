@@ -37,7 +37,7 @@ export default function CourseTable({ courses, currentUser }) {
     },
     {
       Header: "Personal Schedule Name",
-      accessor: "name"
+      accessor: "name",
     },
     {
       Header: "Course ID",
@@ -45,7 +45,7 @@ export default function CourseTable({ courses, currentUser }) {
     },
     {
       Header: "Title",
-      accessor: "title"
+      accessor: "title",
     },
     {
       Header: "Quarter",
