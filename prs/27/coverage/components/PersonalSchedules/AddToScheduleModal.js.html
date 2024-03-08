@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">63.63% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>7/11</span>
+                <span class='fraction'>11/11</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>1/2</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">25% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/4</span>
+                <span class='fraction'>4/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">63.63% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>7/11</span>
+                <span class='fraction'>11/11</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -135,29 +135,29 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">18x</span>
-<span class="cline-any cline-yes">18x</span>
-<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-yes">27x</span>
+<span class="cline-any cline-yes">27x</span>
+<span class="cline-any cline-yes">27x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">18x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">18x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">27x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-yes">27x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">27x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">18x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">27x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -203,13 +203,13 @@ export default function AddToScheduleModal({ section, onAdd }) {
   const [selectedSchedule, setSelectedSchedule] = useState('');
   const [hasSchedules, setHasSchedules] = useState(true);
 &nbsp;
-  const handleModalClose = <span class="fstat-no" title="function not covered" >()</span> =&gt; {
-<span class="cstat-no" title="statement not covered" >    setShowModal(false);</span>
+  const handleModalClose = () =&gt; {
+    setShowModal(false);
   };
 &nbsp;
-  const handleModalSave = <span class="fstat-no" title="function not covered" >()</span> =&gt; {
-<span class="cstat-no" title="statement not covered" >    onAdd(section, selectedSchedule);</span>
-<span class="cstat-no" title="statement not covered" >    handleModalClose();</span>
+  const handleModalSave = () =&gt; {
+    onAdd(section, selectedSchedule);
+    handleModalClose();
   };
 &nbsp;
   &lt;PersonalScheduleSelector
@@ -221,7 +221,7 @@ export default function AddToScheduleModal({ section, onAdd }) {
 &nbsp;
   return (
     &lt;&gt;
-      &lt;Button variant="success" onClick={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >setShowModal(true)}</span>&gt;Add&lt;/Button&gt;
+      &lt;Button variant="success" onClick={() =&gt; setShowModal(true)}&gt;Add&lt;/Button&gt;
 &nbsp;
       &lt;Modal show={showModal} onHide={handleModalClose}&gt;
         &lt;Modal.Header closeButton&gt;
@@ -240,7 +240,7 @@ export default function AddToScheduleModal({ section, onAdd }) {
               /&gt;
             &lt;/Form.Group&gt;
           ) : (
-<span class="branch-1 cbranch-no" title="branch not covered" >            &lt;p&gt;No schedules found. &lt;Link to="/personalschedules/create"&gt;Create a schedule&lt;/Link&gt;&lt;/p&gt;</span>
+            &lt;p&gt;No schedules found. &lt;Link to="/personalschedules/create"&gt;Create a schedule&lt;/Link&gt;&lt;/p&gt;
           )}
           &lt;/Form&gt;
         &lt;/Modal.Body&gt;
@@ -262,7 +262,7 @@ export default function AddToScheduleModal({ section, onAdd }) {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Thu Mar 07 2024 19:54:19 GMT-0800 (Pacific Standard Time)
+                at Thu Mar 07 2024 20:12:06 GMT-0800 (Pacific Standard Time)
             </div>
         <script src="../../prettify.js"></script>
         <script>
