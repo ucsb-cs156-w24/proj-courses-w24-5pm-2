@@ -128,7 +128,13 @@
 <a name='L63'></a><a href='#L63'>63</a>
 <a name='L64'></a><a href='#L64'>64</a>
 <a name='L65'></a><a href='#L65'>65</a>
-<a name='L66'></a><a href='#L66'>66</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -193,16 +199,22 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { useState } from 'react';
-import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import PersonalScheduleSelector from './PersonalScheduleSelector';
-import { Link } from 'react-router-dom';
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { useState } from "react";
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import PersonalScheduleSelector from "./PersonalScheduleSelector";
+import { Link } from "react-router-dom";
 &nbsp;
 export default function AddToScheduleModal({ section, onAdd }) {
   const [showModal, setShowModal] = useState(false);
-  const [selectedSchedule, setSelectedSchedule] = useState('');
+  const [selectedSchedule, setSelectedSchedule] = useState("");
   // Stryker disable next-line all : internal hook, not sure how to test
   const [hasSchedules, setHasSchedules] = useState(true);
 &nbsp;
@@ -220,11 +232,13 @@ export default function AddToScheduleModal({ section, onAdd }) {
     setSchedule={setSelectedSchedule}
     controlId="scheduleSelect"
     setHasSchedules={setHasSchedules}
-  /&gt;
+  /&gt;;
 &nbsp;
   return (
     &lt;&gt;
-      &lt;Button variant="success" onClick={() =&gt; setShowModal(true)}&gt;Add&lt;/Button&gt;
+      &lt;Button variant="success" onClick={() =&gt; setShowModal(true)}&gt;
+        Add
+      &lt;/Button&gt;
 &nbsp;
       &lt;Modal show={showModal} onHide={handleModalClose}&gt;
         &lt;Modal.Header closeButton&gt;
@@ -232,19 +246,22 @@ export default function AddToScheduleModal({ section, onAdd }) {
         &lt;/Modal.Header&gt;
         &lt;Modal.Body&gt;
           &lt;Form&gt;
-          {hasSchedules ? (
-            &lt;Form.Group controlId="scheduleSelect"&gt;
-              &lt;Form.Label&gt;Select Schedule&lt;/Form.Label&gt;
-              &lt;PersonalScheduleSelector
-                schedule={selectedSchedule}
-                setSchedule={setSelectedSchedule}
-                controlId="scheduleSelect"
-                setHasSchedules={setHasSchedules}
-              /&gt;
-            &lt;/Form.Group&gt;
-          ) : (
-            &lt;p&gt;No schedules found. &lt;Link to="/personalschedules/create"&gt;Create a schedule&lt;/Link&gt;&lt;/p&gt;
-          )}
+            {hasSchedules ? (
+              &lt;Form.Group controlId="scheduleSelect"&gt;
+                &lt;Form.Label&gt;Select Schedule&lt;/Form.Label&gt;
+                &lt;PersonalScheduleSelector
+                  schedule={selectedSchedule}
+                  setSchedule={setSelectedSchedule}
+                  controlId="scheduleSelect"
+                  setHasSchedules={setHasSchedules}
+                /&gt;
+              &lt;/Form.Group&gt;
+            ) : (
+              &lt;p&gt;
+                No schedules found.{" "}
+                &lt;Link to="/personalschedules/create"&gt;Create a schedule&lt;/Link&gt;
+              &lt;/p&gt;
+            )}
           &lt;/Form&gt;
         &lt;/Modal.Body&gt;
         &lt;Modal.Footer&gt;
@@ -258,14 +275,15 @@ export default function AddToScheduleModal({ section, onAdd }) {
       &lt;/Modal&gt;
     &lt;/&gt;
   );
-}</pre></td></tr></table></pre>
+}
+&nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Sun Mar 10 2024 19:08:58 GMT-0700 (Pacific Daylight Time)
+                at Sun Mar 10 2024 19:17:49 GMT-0700 (Pacific Daylight Time)
             </div>
         <script src="../../prettify.js"></script>
         <script>
