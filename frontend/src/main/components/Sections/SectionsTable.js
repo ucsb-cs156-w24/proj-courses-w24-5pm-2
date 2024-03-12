@@ -1,4 +1,9 @@
 import SectionsTableBase from "main/components/SectionsTableBase";
+import AddToScheduleModal from "main/components/PersonalSchedules/AddToScheduleModal";
+
+import { useBackendMutation } from "main/utils/useBackend";
+import { toast } from "react-toastify";
+import { useCurrentUser } from "main/utils/currentUser.js";
 
 import { yyyyqToQyy } from "main/utils/quarterUtilities.js";
 import {
@@ -17,9 +22,45 @@ function getFirstVal(values) {
   return values[0];
 }
 
+export const objectToAxiosParams = (data) => {
+  return {
+    url: "/api/courses/post",
+    method: "POST",
+    params: {
+      enrollCd: data.enrollCd.toString(),
+      psId: data.psId.toString(),
+    },
+  };
+};
+
+export const handleAddToSchedule = (section, schedule, mutation) => {
+  // Execute the mutation with the provided data
+  const dataFinal = {
+    enrollCd: section.section.enrollCode,
+    psId: schedule,
+  };
+  mutation.mutate(dataFinal);
+};
+
+export const onSuccess = (response) => {
+  toast(
+    `New course Created - id: ${response[0].id} enrollCd: ${response[0].enrollCd}`,
+  );
+};
+
 export default function SectionsTable({ sections }) {
   // Stryker restore all
   // Stryker disable BooleanLiteral
+
+  const { data: currentUser } = useCurrentUser();
+
+  const mutation = useBackendMutation(
+    objectToAxiosParams,
+    { onSuccess },
+    // Stryker disable next-line all : hard to set up test for caching
+    ["/api/courses/user/all"],
+  );
+
   const columns = [
     {
       Header: "Quarter",
@@ -110,7 +151,26 @@ export default function SectionsTable({ sections }) {
       Header: "Enroll Code",
       accessor: "section.enrollCode",
       disableGroupBy: true,
-
+      Cell: ({ cell: { value }, row: { original } }) => {
+        // Stryker disable all : difficult to test modal interaction
+        /* istanbul ignore next : difficult to test modal interaction*/
+        if (isSection(original.section.section) && currentUser.loggedIn) {
+          return (
+            <div className="d-flex align-items-center gap-2">
+              <span>{value}</span>
+              <AddToScheduleModal
+                section={original}
+                onAdd={(section, schedule) =>
+                  handleAddToSchedule(section, schedule, mutation)
+                }
+              />
+            </div>
+          );
+        } else {
+          return value;
+        }
+        // Stryker restore all
+      },
       aggregate: getFirstVal,
       Aggregated: ({ cell: { value } }) => `${value}`,
     },
